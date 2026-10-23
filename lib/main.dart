@@ -19,12 +19,42 @@ class Student {
 
 // Hard-coded sample data (a const list of 6 students).
 const List<Student> students = [
-  Student(name: 'Maria Lopez', course: 'BS Information Technology', yearLevel: 3, email: 'maria.lopez@school.edu'),
-  Student(name: 'Jun Villanueva', course: 'BS Computer Science', yearLevel: 2, email: 'jun.villanueva@school.edu'),
-  Student(name: 'Grace Tan', course: 'BS Information Systems', yearLevel: 4, email: 'grace.tan@school.edu'),
-  Student(name: 'Carlo Mendoza', course: 'BS Computer Engineering', yearLevel: 1, email: 'carlo.mendoza@school.edu'),
-  Student(name: 'Bea Garcia', course: 'BS Information Technology', yearLevel: 2, email: 'bea.garcia@school.edu'),
-  Student(name: 'Nico Dizon', course: 'BS Computer Science', yearLevel: 3, email: 'nico.dizon@school.edu'),
+  Student(
+    name: 'Maria Lopez',
+    course: 'BS Information Technology',
+    yearLevel: 3,
+    email: 'maria.lopez@school.edu',
+  ),
+  Student(
+    name: 'Jun Villanueva',
+    course: 'BS Computer Science',
+    yearLevel: 2,
+    email: 'jun.villanueva@school.edu',
+  ),
+  Student(
+    name: 'Grace Tan',
+    course: 'BS Information Systems',
+    yearLevel: 4,
+    email: 'grace.tan@school.edu',
+  ),
+  Student(
+    name: 'Carlo Mendoza',
+    course: 'BS Computer Engineering',
+    yearLevel: 1,
+    email: 'carlo.mendoza@school.edu',
+  ),
+  Student(
+    name: 'Bea Garcia',
+    course: 'BS Information Technology',
+    yearLevel: 2,
+    email: 'bea.garcia@school.edu',
+  ),
+  Student(
+    name: 'Nico Dizon',
+    course: 'BS Computer Science',
+    yearLevel: 3,
+    email: 'nico.dizon@school.edu',
+  ),
 ];
 
 // Stateless: it only builds the MaterialApp from fixed values and never changes by itself.
@@ -35,7 +65,11 @@ class DirectoryApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Campus Directory',
-      theme: ThemeData(useMaterial3: true, colorSchemeSeed: Colors.blue),
+      debugShowCheckedModeBanner: false, // CUSTOMIZATION 1: hides the red DEBUG ribbon
+      theme: ThemeData(
+        useMaterial3: true,
+        colorSchemeSeed: Colors.teal, // CUSTOMIZATION 2: theme seed color changed from the default blue
+      ),
       home: const DirectoryScreen(),
     );
   }
@@ -50,6 +84,7 @@ class DirectoryScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: const Text('Campus Directory')),
       body: ListView(
+        padding: const EdgeInsets.all(12), // CUSTOMIZATION 3: padding around the whole list
         children: [
           const SectionHeader(title: 'Students'),
           for (final student in students) StudentCard(student: student),
@@ -75,7 +110,7 @@ class SectionHeader extends StatelessWidget {
           style: TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
-            color: Theme.of(context).colorScheme.primary,
+            color: Theme.of(context).colorScheme.primary, // colored heading from the theme
           ),
         ),
         const Divider(),
@@ -112,18 +147,33 @@ class StudentCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(16), // CUSTOMIZATION 4: rounded card corners
+      ),
       child: Padding(
-        padding: const EdgeInsets.all(12),
+        padding: const EdgeInsets.all(16),
         child: Row(
           children: [
-            CircleAvatar(child: Text(student.name[0])),
-            const SizedBox(width: 12),
+            CircleAvatar(
+              radius: 28,
+              backgroundColor: Theme.of(context).colorScheme.primary, // CUSTOMIZATION 5: avatar color from the theme
+              foregroundColor: Colors.white,
+              child: Text(student.name[0]), // first letter of the name
+            ),
+            const SizedBox(width: 16),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(student.name, style: const TextStyle(fontWeight: FontWeight.bold)),
+                  Text(
+                    student.name,
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold, // CUSTOMIZATION 6: bigger bold name
+                    ),
+                  ),
                   Text(student.course),
+                  const SizedBox(height: 6),
                   InfoRow(icon: Icons.school, text: 'Year ${student.yearLevel}'),
                   InfoRow(icon: Icons.email, text: student.email),
                 ],
