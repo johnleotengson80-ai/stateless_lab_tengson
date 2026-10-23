@@ -20,40 +20,46 @@ class Student {
 // Hard-coded sample data (a const list of 6 students).
 const List<Student> students = [
   Student(
-    name: 'Maria Lopez',
+    name: 'Lexi Lore',
     course: 'BS Information Technology',
     yearLevel: 3,
-    email: 'maria.lopez@school.edu',
+    email: 'lexi.lore@school.edu',
   ),
   Student(
-    name: 'Jun Villanueva',
+    name: 'Dianna Rider',
     course: 'BS Computer Science',
     yearLevel: 2,
-    email: 'jun.villanueva@school.edu',
+    email: 'dianna.rider@school.edu',
   ),
   Student(
-    name: 'Grace Tan',
+    name: 'Mia Khalifa',
     course: 'BS Information Systems',
     yearLevel: 4,
-    email: 'grace.tan@school.edu',
+    email: 'mia.khalifa@school.edu',
   ),
   Student(
-    name: 'Carlo Mendoza',
+    name: 'Johnny Sins',
     course: 'BS Computer Engineering',
     yearLevel: 1,
-    email: 'carlo.mendoza@school.edu',
+    email: 'johnny.sins@school.edu',
   ),
   Student(
-    name: 'Bea Garcia',
+    name: 'Aj Ravals',
     course: 'BS Information Technology',
     yearLevel: 2,
-    email: 'bea.garcia@school.edu',
+    email: 'aj.raval@school.edu',
   ),
   Student(
-    name: 'Nico Dizon',
+    name: 'John Leo Gwapo',
     course: 'BS Computer Science',
     yearLevel: 3,
-    email: 'nico.dizon@school.edu',
+    email: 'john.leo.gwapo@school.edu',
+  ),
+  Student(
+    name: 'Step Bro',
+    course: 'BS Computer Science',
+    yearLevel: 3,
+    email: 'step.bro@school.edu',
   ),
 ];
 
@@ -68,7 +74,7 @@ class DirectoryApp extends StatelessWidget {
       debugShowCheckedModeBanner: false, // CUSTOMIZATION 1: hides the red DEBUG ribbon
       theme: ThemeData(
         useMaterial3: true,
-        colorSchemeSeed: Colors.teal, // CUSTOMIZATION 2: theme seed color changed from the default blue
+        colorSchemeSeed: Colors.deepPurple, // CUSTOMIZATION 2: theme seed color changed from the default blue
       ),
       home: const DirectoryScreen(),
     );
